@@ -1,0 +1,22 @@
+
+
+<link href="https://unpkg.com/cesium@latest/Build/Cesium/Widgets/widgets.css
+      rel="stylesheet"/>
+<script src="https://unpkg.com/cesium@latest/Build/Cesium/Cesium.js"></script>
+<script>
+    new Cesium.Viewer('map', // 地図を表示するhtml要素のidを指定
+        {
+            // レイヤーをセット
+            imageryProvider: new Cesium.OpenStreetMapImageryProvider({
+                // 表示するタイルレイヤーのURLを指定
+                url: 'https://cyberjapandata.gsi.go.jp/xyz/std/',
+                fileExtension: 'png'
+            }),
+            // ionの認証処理が呼ばれないよう2つのプロパティにfalseをセット
+            baseLayerPicker: false,
+            geocoder: false
+        }
+    ).camera.setView({ // 初期表示時のカメラ位置を指定
+        destination: Cesium.Cartesian3.fromDegrees(138, 35, 3000000)
+    })
+</script>
